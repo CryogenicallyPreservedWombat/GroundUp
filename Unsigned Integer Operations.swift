@@ -72,6 +72,5 @@ func exponentiate(_ value1: UInt, _ value2: UInt) -> UInt {
         ans = multiply(ans, x)
     }
     
-    print(x, ans, multiplier, y)
     return ans << multiply(multiplier, y)
 }
