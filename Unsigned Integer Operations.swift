@@ -44,8 +44,34 @@ func multiply(_ value1: UInt, _ value2: UInt) -> UInt {
     var (x, y) = (value1, value2)
     while x != 0 {
         if x & 1 != 0 { ans = add(ans, y) }
+        
+        if (x ^ 1) == 0 {
+            x = 0
+            break
+        }
+        
         ans <<= 1
         x >>= 1
     }
     return ans
+}
+
+func exponentiate(_ value1: UInt, _ value2: UInt) -> UInt {
+    var ans: UInt = 1
+    var (x, y) = (value1, value2)
+    var multiplier: UInt = 0
+    
+    while (x & 1) == 0 {
+        multiplier = next(multiplier)
+        x >>= 1
+    }
+    
+    var counter: UInt = 0
+    while (counter ^ y) != 0 {
+        counter = next(counter)
+        ans = multiply(ans, x)
+    }
+    
+    print(x, ans, multiplier, y)
+    return ans << multiply(multiplier, y)
 }
