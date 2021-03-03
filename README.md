@@ -1,2 +1,5 @@
 # GroundUp
-A little practice defining operators in terms of other, hopefully more rudimentary ones
+
+## Redefining some common operators in terms of simpler ones in Swift
+
+For some reason.  
