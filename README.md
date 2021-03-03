@@ -1,5 +1,5 @@
 # GroundUp
 
-## Redefining some common operators in terms of simpler ones in Swift
+## Redefining Common Operators in Swift
 
 For some reason.  
