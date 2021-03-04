@@ -7,9 +7,6 @@
 
 import Foundation
 
-// Defining operators and functions entirely from the bitwise operators: ~ & | ^ << and >> as well as the associated syntactic sugar &=, |=, <<=, and >>=
-// Unfortunately (in this context) 0 does not evaluate as false, so I will be permitting myself != 0 and == 0 as valid operations
-
 func next(_ value: UInt) -> UInt {
     var bit: UInt = 1
     var x = value
@@ -22,10 +19,12 @@ func next(_ value: UInt) -> UInt {
 }
 
 func add(_ value1: UInt, _ value2: UInt) -> UInt {
-    var carry: UInt = 0
-    var (x, y) = (value1, value2)
-    var bit: UInt = 0
     var ans: UInt = 0
+    var (x, y) = (value1, value2)
+    
+    var carry: UInt = 0
+    var bit: UInt = 0
+    
     while (x | y | carry) != 0 {
         ans |= ((x & 1) ^ (y & 1) ^ carry) << bit
         carry = ((x & 1) & (y & 1)) | ((carry) & (x & 1)) | ((carry) & (y & 1))
@@ -40,8 +39,9 @@ func add(_ value1: UInt, _ value2: UInt) -> UInt {
 }
 
 func multiply(_ value1: UInt, _ value2: UInt) -> UInt {
-    var (x, y) = (value1, value2)
     var ans: UInt = 0
+    var (x, y) = (value1, value2)
+    
     var counter: UInt = 0
     
     while x != 0 {
@@ -56,6 +56,7 @@ func multiply(_ value1: UInt, _ value2: UInt) -> UInt {
 func exponentiate(_ value1: UInt, _ value2: UInt) -> UInt {
     var ans: UInt = 1
     var (x, y) = (value1, value2)
+    
     var multiplier: UInt = 0
     
     while (x & 1) == 0 {
@@ -69,6 +70,5 @@ func exponentiate(_ value1: UInt, _ value2: UInt) -> UInt {
         ans = multiply(ans, x)
     }
     
-    print(x, ans, multiplier, y)
     return ans << multiply(multiplier, y)
 }
